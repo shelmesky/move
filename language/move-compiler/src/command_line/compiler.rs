@@ -140,7 +140,7 @@ impl<'a> Compiler<'a> {
         named_address_map: BTreeMap<NamedAddress, NumericalAddress>,
     ) -> Self {
         let first_file = targets.get(0).unwrap();
-        println!("first file str {:?}", Symbol::as_str(first_file));
+        println!("first file str {:?}", first_file.as_str());
         let targets = vec![PackagePaths {
             name: None,
             paths: targets,
