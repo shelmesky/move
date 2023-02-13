@@ -223,10 +223,10 @@ impl<'a> Compiler<'a> {
         )?;
         let mut compilation_env = CompilationEnv::new(flags);
         let (source_text, pprog_and_comments_res) =
-            parse_program(&mut compilation_env, maps, targets, deps)?;
+            parse_program(&mut compilation_env, maps, targets.clone(), deps)?;
 
-        let targets_len = targets.len();
-        let first_target = targets.get(0).unwrap();
+        let targets_len = targets.clone().len();
+        let first_target = targets.clone().get(0).unwrap();
         println!("run targets_len {:?} first_target {:?}", targets_len, first_target);
         println!("run source_text {:?} pprog_and_comments_res {:?}", source_text, pprog_and_comments_res);
 
