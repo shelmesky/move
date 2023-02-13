@@ -123,7 +123,12 @@ impl<'a> Compiler<'a> {
         let targets = indexed_scopes(&mut maps, targets);
         let deps = indexed_scopes(&mut maps, deps);
 
-        println!("from_package_paths -> targets {:?}", targets.get(0).unwrap().package);
+        let targets_len = targets.len();
+        let first_target = targets.get(0).unwrap();
+        let deps_len = deps.len();
+        let first_dep = targets.get(0).unwrap();
+        println!("from_package_paths -> targets length {:?} first targets {:?}", targets_len, first_target);
+        println!("from_package_paths -> deps length {:?} first dep {:?}", deps_len, first_dep);
 
         Self {
             maps,
