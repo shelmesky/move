@@ -224,6 +224,7 @@ impl<'a> Compiler<'a> {
         let mut compilation_env = CompilationEnv::new(flags);
         let (source_text, pprog_and_comments_res) =
             parse_program(&mut compilation_env, maps, targets, deps)?;
+        println!("run source_text {:?} pprog_and_comments_res {:?}", source_text, pprog_and_comments_res);
         let res: Result<_, Diagnostics> = pprog_and_comments_res.and_then(|(pprog, comments)| {
             SteppedCompiler::new_at_parser(compilation_env, pre_compiled_lib, pprog)
                 .run::<TARGET>()
