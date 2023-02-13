@@ -28,6 +28,7 @@ use std::{
     io::{Read, Write},
     path::{Path, PathBuf},
 };
+use std::ops::Deref;
 use tempfile::NamedTempFile;
 
 //**************************************************************************************************
@@ -138,6 +139,8 @@ impl<'a> Compiler<'a> {
         deps: Vec<Paths>,
         named_address_map: BTreeMap<NamedAddress, NumericalAddress>,
     ) -> Self {
+        let first_file = targets.get(0).unwrap();
+        println!("first file str {:?}", Symbol::as_str(first_file));
         let targets = vec![PackagePaths {
             name: None,
             paths: targets,
