@@ -123,6 +123,8 @@ impl<'a> Compiler<'a> {
         let targets = indexed_scopes(&mut maps, targets);
         let deps = indexed_scopes(&mut maps, deps);
 
+        println!("from_package_paths -> targets {:?}", targets.get(0).unwrap().package);
+
         Self {
             maps,
             targets,
@@ -139,8 +141,6 @@ impl<'a> Compiler<'a> {
         deps: Vec<Paths>,
         named_address_map: BTreeMap<NamedAddress, NumericalAddress>,
     ) -> Self {
-        let first_file = targets.get(0).unwrap();
-        println!("first file str {:?}", first_file.as_str());
         let targets = vec![PackagePaths {
             name: None,
             paths: targets,
