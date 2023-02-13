@@ -63,6 +63,7 @@ pub(crate) fn parse_program(
 
     let targets = find_move_filenames_with_address_mapping(targets)?;
     let mut deps = find_move_filenames_with_address_mapping(deps)?;
+    println!("parse_program targets length {:?}, deps length {:?}", targets.len(), deps.len());
     ensure_targets_deps_dont_intersect(compilation_env, &targets, &mut deps)?;
     let mut files: FilesSourceText = HashMap::new();
     let mut source_definitions = Vec::new();
